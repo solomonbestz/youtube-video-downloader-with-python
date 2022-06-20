@@ -4,6 +4,8 @@ from moviepy import *
 from moviepy.editor import VideoFileClip
 from pytube import YouTube
 
+import shutil
+
 
 
 
@@ -30,6 +32,10 @@ def download_file():
     video_clip = VideoFileClip(mp4_video)
     video_clip.close()
 
+    #move the download file t selected directory
+    shutil.move(mp4_video, user_path)
+    screen.title("Downloaded")
+
 # App logo image
 logo_img = PhotoImage(file='yt.png')
 
@@ -38,7 +44,8 @@ logo_img = logo_img.subsample(2, 2)
 
 #link inpot field
 link_field = Entry(screen, width=50)
-link_label = Label(screen, text='Enter Youtube Video Link', font=('Arial', 15))
+link_field.insert(END, "Enter link here")
+link_label = Label(screen, text='Bestz Youtube Video Link', font=('Arial', 15))
 
 #Select Path for saving the file
 path_label = Label(screen, text="Select Path For Download: ", font=('Arial', 10))
