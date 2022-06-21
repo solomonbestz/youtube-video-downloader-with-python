@@ -12,6 +12,9 @@ import shutil
 # Default Variable Instantiation
 screen = Tk()
 title = screen.title('Youtube Downloader By Bestz Group')
+screen.minsize(700, 600)
+screen.maxsize(700, 600)
+screen.iconbitmap('media/favicon.ico')
 canvas = Canvas(screen, width= 700, height=600)
 canvas.pack()
 
@@ -37,7 +40,7 @@ def download_file():
     screen.title("Downloaded")
 
 # App logo image
-logo_img = PhotoImage(file='yt.png')
+logo_img = PhotoImage(file='media/yt.png')
 
 #resize
 logo_img = logo_img.subsample(2, 2)
