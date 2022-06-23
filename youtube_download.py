@@ -1,7 +1,5 @@
-from select import select
 from tkinter import *
 from tkinter import filedialog
-from turtle import Screen
 from moviepy import * 
 from moviepy.editor import VideoFileClip
 from pytube import YouTube
@@ -19,11 +17,26 @@ class YTDownloader(Tk):
         self.canva = Canvas(width= 700, height=600)
         self.canva.pack()
     
-    def select_path():
-        pass
+    def select_path(self):
+        self.path = filedialog.askdirectory()
+        self.path_field.delete(0, END)
+        self.path_field.insert(END, self.path)
 
-    def download():
-        pass
+    def download(self):
+        #get user path
+        self.get_link = self.link_field.get()
+        
+        #get selected path
+        self.user_path = self.path_field.get()
+
+        #Download Video
+        self.mp4_video = YouTube(self.get_link).streams.get_highest_resolution().download()
+        self.video_clip = VideoFileClip(self.mp4_video)
+        self.video_clip.close()
+
+        #move the download file to selected directory
+        shutil.move(self.mp4_video, self.user_path)
+        self.title("Downloaded")
 
     def images(self):
         self.img = PhotoImage(file='media/yt.png')
@@ -46,11 +59,15 @@ class YTDownloader(Tk):
         self.download_btn = Button(text="Download", command=self.download, border=0, background='red', height=2)
 
     def canvas_pos(self):
-        self.canva.create_image(350, 60, image=self.logo_img)
+        # Position for logo image
+        self.canva.create_image(350, 60, image=self.logo_img) 
+        # Position for fields
         self.canva.create_window(370, 280, width=250, height=30, window=self.path_field)
-        self.canva.create_window(350, 220, width=250, height=30, window=self.link_field)
+        self.canva.create_window(350, 220, width=350, height=30, window=self.link_field)
+        # Position for labels
         self.canva.create_window(350, 170, window=self.link_label)
         self.canva.create_window(160, 280, window=self.path_label)
+        # Postion for buttons
         self.canva.create_window(520, 280, window=self.select_btn)
         self.canva.create_window(350, 350, window=self.download_btn)
 
