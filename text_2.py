@@ -46,18 +46,13 @@
 
 # #Download buttons
 # download_btn = Button(screen, text="Download", command=download_file, border=0, background= 'red', height=2)
-
-# #Add logo image to the windows 
+ 
 # canvas.create_image(350, 60, image=logo_img)
-
-# #Add the widgets to windows
 # canvas.create_window(350, 170, window=link_label)
 # canvas.create_window(350, 220, width=250, height=30, window=link_field)
-
-# #Add the widgets to window path to download 
 # canvas.create_window(160, 280, window=path_label)
 # canvas.create_window(370, 280, width=250, height=30, window=path_field)
 # canvas.create_window(520, 280, window=select_btn)
-
-# #add the widget to window download button 
 # canvas.create_window(350, 350, window=download_btn)
+
+
