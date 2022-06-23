@@ -3,6 +3,7 @@ from tkinter import filedialog
 from moviepy import * 
 from moviepy.editor import VideoFileClip
 from pytube import YouTube
+from fonts import *
 
 import shutil
 
@@ -43,9 +44,9 @@ class YTDownloader(Tk):
         self.logo_img = self.img.subsample(2, 2)
 
     def labels(self):
-        self.header_text = Label(text="BESTZ YOUTUBE VIDEO DOWNLOADER", font=('Helvetica', 20))
-        self.link_label = Label(text='Input Video Link: ', font=('Arial', 10))
-        self.path_label = Label(text="Select Path For Download: ", font=('Arial', 10))
+        self.header_text = Label(text="BESTZ YOUTUBE VIDEO DOWNLOADER", font=label_fonts(20, 'Helvetica'))
+        self.link_label = Label(text='Input Video Link: ', font=label_fonts(10, 'Helvetica'))
+        self.path_label = Label(text="Select Path For Download: ", font=label_fonts(10, 'Helvetica'))
 
     def labels_insert(self):
         self.link_field.insert(END, "Paste Your Link Here.")
@@ -56,14 +57,14 @@ class YTDownloader(Tk):
         self.path_field = Entry(borderwidth=0, highlightthickness=0)
 
     def button(self):
-        self.select_btn = Button(text='Select', command=self.select_path, border=0, background='red', font=('Arial', 10), height=2, width=10)
-        self.download_btn = Button(text="Download", command=self.download, border=0, background='red', font=('Arial', 10), height=2, width=30)
+        self.select_btn = Button(text='Select', command=self.select_path, border=1, background='green', font= button_fonts(10, 'times'), height=1, width=10)
+        self.download_btn = Button(text="Download", command=self.download, border=1, foreground = 'white', background='black', font= button_fonts(11, 'Helvetica'), height=2, width=30)
 
     def canvas_pos(self):
         # Position for logo image
         self.canva.create_image(350, 60, image=self.logo_img) 
         # Position for fields
-        self.canva.create_window(395, 320, width=250, height=30, window=self.path_field)
+        self.canva.create_window(400, 320, width=250, height=30, window=self.path_field)
         self.canva.create_window(400, 280, width=350, height=30, window=self.link_field)
         # Position for labels
         self.canva.create_window(170, 280, window=self.link_label)
