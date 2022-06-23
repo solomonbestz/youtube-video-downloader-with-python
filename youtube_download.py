@@ -43,7 +43,8 @@ class YTDownloader(Tk):
         self.logo_img = self.img.subsample(2, 2)
 
     def labels(self):
-        self.link_label = Label(text='Bestz Youtube Video Link', font=('Arial', 15))
+        self.header_text = Label(text="BESTZ YOUTUBE VIDEO DOWNLOADER", font=('Helvetica', 20))
+        self.link_label = Label(text='Input Video Link: ', font=('Arial', 10))
         self.path_label = Label(text="Select Path For Download: ", font=('Arial', 10))
 
     def labels_insert(self):
@@ -55,21 +56,22 @@ class YTDownloader(Tk):
         self.path_field = Entry(borderwidth=0, highlightthickness=0)
 
     def button(self):
-        self.select_btn = Button(text='Select', command=self.select_path, border=0, background='red', height=2)
-        self.download_btn = Button(text="Download", command=self.download, border=0, background='red', height=2)
+        self.select_btn = Button(text='Select', command=self.select_path, border=0, background='red', font=('Arial', 10), height=2, width=10)
+        self.download_btn = Button(text="Download", command=self.download, border=0, background='red', font=('Arial', 10), height=2, width=30)
 
     def canvas_pos(self):
         # Position for logo image
         self.canva.create_image(350, 60, image=self.logo_img) 
         # Position for fields
-        self.canva.create_window(370, 280, width=250, height=30, window=self.path_field)
-        self.canva.create_window(350, 220, width=350, height=30, window=self.link_field)
+        self.canva.create_window(395, 320, width=250, height=30, window=self.path_field)
+        self.canva.create_window(400, 280, width=350, height=30, window=self.link_field)
         # Position for labels
-        self.canva.create_window(350, 170, window=self.link_label)
-        self.canva.create_window(160, 280, window=self.path_label)
+        self.canva.create_window(170, 280, window=self.link_label)
+        self.canva.create_window(190, 320, window=self.path_label)
+        self.canva.create_window(380, 150, window=self.header_text)
         # Postion for buttons
-        self.canva.create_window(520, 280, window=self.select_btn)
-        self.canva.create_window(350, 350, window=self.download_btn)
+        self.canva.create_window(570, 320, window=self.select_btn)
+        self.canva.create_window(350, 370, window=self.download_btn)
 
 if __name__=='__main__':
     youtube = YTDownloader()
