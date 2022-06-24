@@ -1,13 +1,9 @@
-from tkinter import *
-from tkinter import filedialog
+from app import *
 from moviepy import * 
 from moviepy.editor import VideoFileClip
 from pytube import YouTube
 from fonts import *
-
 import shutil
-
-
 
 class YTDownloader(Tk):
     def __init__(self):
@@ -15,9 +11,11 @@ class YTDownloader(Tk):
         self.title("Youtube Video Downloader")
         self.resizable(False, False)
         self.iconbitmap('media/favicon.ico')
+
+    def canvass(self):
         self.canva = Canvas(width= 700, height=600)
         self.canva.pack()
-    
+
     def select_path(self):
         self.path = filedialog.askdirectory()
         self.path_field.delete(0, END)
@@ -74,14 +72,5 @@ class YTDownloader(Tk):
         self.canva.create_window(570, 320, window=self.select_btn)
         self.canva.create_window(350, 370, window=self.download_btn)
 
-if __name__=='__main__':
-    youtube = YTDownloader()
-    youtube.images()
-    youtube.labels()
-    youtube.fields()
-    youtube.labels_insert()
-    youtube.button()
-    youtube.canvas_pos()
-    youtube.mainloop()
 
 
